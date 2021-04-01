@@ -1,0 +1,87 @@
+<html>
+
+<head>
+  <style>
+    .q {
+      width: 100%;
+      padding: 2px 0;
+      text-align: center;
+      background-color: lightblue;
+      margin-top: 10px;
+    }
+
+    .disabled
+    {
+        background-color: #DDD;
+        color: #999;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="q1" class="q">
+    <h3>Call 1 Q1: Was this A-Level Customer Interaction?</h3>
+    <select id="dropDown1" onchange="showSubQuestion('q1b','dropDown1')">
+      <option value="select">select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+    <br><br>
+  </div>
+  <div id="q1b" class="q">
+    <h3>Call 1 Q1B: Select the CI error.</h3>
+    <select id="dropDown1b" onchange="showSubQuestion('q1b','dropDown1b', false)">
+      <option value="select">select</option>
+      <option value="Condescending">Condescending</option>
+      <option value="Did Not Make It Easy">Did Not Make It Easy</option>
+      <option value="Transactional">Transactional</option>
+    </select>
+  </div>
+
+  <div id="q2" class="q">
+    <h3>Call 1 Q2: Was this A-level Quality?</h3>
+    <select id="dropDown2" onchange="showSubQuestion('q2b','dropDown2')">
+      <option value="select">select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+  <div id="q2b" class="q">
+    <h3>Call 1 Q2B: Select the Quality error.</h3>
+    <select id="dropDown2b" onchange="showSubQuestion('q2b','dropDown2b', false)">
+      <option value="select">select</option>
+      <option value="Alert">Alert</option>
+      <option value="Assumption">Assumption</option>
+      <option value="Billing">Billing</option>
+    </select>
+  </div>
+
+  <div id="q3" class="q">
+    <h3>Call 1 Q3: Was this A-level Quality? (Not for scoring)</h3>
+    <select id="dropDown3" onchange="showSubQuestion('q3b','dropDown3')">
+      <option value="select">select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <div id="q3b" class="q">
+    <h3>Call 1 Q3B: Select the Quality error.(Not for scoring)</h3>
+    <select id="dropDown3b" onchange="showSubQuestion('q3b','dropDown3b', false)">
+      <option value="select">select</option>
+      <option value="Alert">Alert</option>
+      <option value="Assumption">Assumption</option>
+      <option value="Billing">Billing</option>
+    </select>
+  </div>
+
+  </br>
+  
+  <button id="submitBtn" class = "disabled" onclick="submitAnswers()">Submit Answers</button>
+
+  <script src="DropDown.js"></script>
+</body>
+
+</html>
