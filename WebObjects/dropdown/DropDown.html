@@ -1,0 +1,79 @@
+<html>
+
+<head>
+  <style>
+    .q {
+      width: 100%;
+      padding: 2px 0;
+      text-align: center;
+      background-color: lightblue;
+      margin-top: 10px;
+    }
+
+    .disabled
+    {
+        background-color: #DDD;
+        color: #999;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="q1" class="q">
+    <h3 id="q1description"></h3>
+    <select id="dropDown1" onchange="setSelection('dropDown1', 'q1b')">
+      <option value="select">select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+    <br><br>
+  </div>
+  <div id="q1b" class="q">
+    <h3 id="q1bdescription"></h3>
+    <select id="dropDown1b" onchange="setSelection('dropDown1b')">
+    
+    </select>
+  </div>
+
+  <div id="q2" class="q">
+    <h3 id="q2description"></h3>
+    <select id="dropDown2" onchange="setSelection('dropDown2', 'q2b')">
+      <option value="select">select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+  <div id="q2b" class="q">
+    <h3 id="q2bdescription"></h3>
+    <select id="dropDown2b" onchange="setSelection('dropDown2b')">
+    </select>
+  </div>
+
+  <div id="q3" class="q">
+    <h3 id="q3description"></h3>
+    <select id="dropDown3" onchange="setSelection('dropDown3')">
+      <option value="select">select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  <div id="q4" class="q">
+    <h3 id="q4description"></h3>
+    <select id="dropDown4" onchange="setSelection('dropDown4')">
+      <option value="select">select</option>
+      <option value="Yes">Yes</option>
+      <option value="No">No</option>
+    </select>
+  </div>
+
+  </br>
+  
+  <button id="submitBtn" class = "disabled" onclick="submitAnswers()">Submit Answers</button>
+
+  <script src="DropDown.js"></script>
+</body>
+
+</html>

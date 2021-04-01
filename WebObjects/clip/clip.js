@@ -1,0 +1,1 @@
+document.getElementById("clip").setAttribute("href", "https://mediastatic.geico.net/GNIEMedia/TAO/players/all-in-one-player.html?MediaFileName=2e5532a5-ec04-495b-b3c7-8f966651d9c6/RHOC21Q1_Call_1.ism/manifest");
