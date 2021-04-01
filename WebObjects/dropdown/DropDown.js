@@ -1,8 +1,6 @@
 var slideManager = parent.slideManager;
-var player = parent.player;
 
-//let slideManager = parent.slideManager;
-//addOptions();
+
 let selections = {};
 let totalCallQuestions = 4;
 
@@ -21,16 +19,16 @@ let submitAnswerBtn = document.getElementById('submitBtn');
 
 
 //make an array of dropdowns
-let q1bDropDown = "mercury, Failed to appropriately respond, earth, mars, jupiter, saturn";// player.GetVar("Q2bDropDown");
-let q2bDropDown = "ace, jack, king, queen, ten";// player.GetVar("Q1bDropDown");
+let q1bDropDown = slideManager.player.GetVar("Q1bDropDown");
+let q2bDropDown = slideManager.player.GetVar("Q2bDropDown");
 
 //make an array of descriptions
-let q1Description = "Call 1 Q1: Was this A-Level Customer Interaction?";// player.GetVar("Q1Description");
-let q1bDescription = "Call 1 Q1B: Select the CI error.";// player.GetVar("Q1bDescription");
-let q2Description = "Call 1 Q2: Was this A-level Quality?";// player.GetVar("Q2Description");
-let q2bDescription = "Call 1 Q2B: Select the Quality error.";// player.GetVar("Q2bDescription");
-let q3Description = "Call 1 Q3: Was this A-level Efficiency? (Not for scoring)";// player.GetVar("Q3Description");
-let q4Description = "Call 1 Q4: Based on this call, is the customer likely to call back related to this request? (Not for scoring)";// player.GetVar("Q4Description");
+let q1Description = slideManager.player.GetVar("Q1Description");
+let q1bDescription = slideManager.player.GetVar("Q1bDescription");
+let q2Description = slideManager.player.GetVar("Q2Description");
+let q2bDescription = slideManager.player.GetVar("Q2bDescription");
+let q3Description = slideManager.player.GetVar("Q3Description");
+let q4Description = slideManager.player.GetVar("Q4Description");
 
 document.getElementById("q1description").innerHTML = q1Description;
 document.getElementById("q1bdescription").innerHTML = q1bDescription;
@@ -50,7 +48,7 @@ function changeSelection() {
 function addDropDownSelections(dropDownSelections, dropdownid) {
 
     let dropDown = document.getElementById(dropdownid);
-    dropDownSelections = parseString(dropDownSelections,",");
+    dropDownSelections = slideManager.parseString(dropDownSelections,",");
    
     let option = document.createElement("option");
     option.value = "select";
@@ -124,9 +122,10 @@ function setCanContinue() {
 function checkCorrectAnswers(correctAnswers) {
 
 
-    let answerKey = parseString(correctAnswers, ",");
+    let answerKey = slideManager.parseString(correctAnswers, ",");
     console.log(answerKey);
     let correctCount = 0;
+    let yourAnswers = "";
 
     //this should never be executed
     if(answerKey.length != totalCallQuestions)
@@ -145,32 +144,32 @@ function checkCorrectAnswers(correctAnswers) {
 
         console.log("correctkey: " + answerKey[i]);
         console.log("your answers: " + currentSlide.varsObject["q" + (i + 1)]);
+        yourAnswers+=currentSlide.varsObject["q" + (i + 1)] + " ";
+        
     }
 
     console.log("correctAnswers: " + correctCount);
-    //set SetVar(correctCount)
-    //set SetVar(yourAnsewers)
+    slideManager.player.SetVar("CorrectCount", correctCount);
+    slideManager.player.SetVar("YourAnswers", yourAnswers)
+
 
 }
 
-
+slideManager.checkCorrectAnswers = checkCorrectAnswers;
 
 function submitAnswers() {
 
 
     if (canContinue === true) {
         //change sl varible to continue to next slide
-        //  player.SetVar("CanContinue", true);
+        slideManager.player.SetVar("CanContinue", true);
     }
     else {
         //change sl variable that pops up alert
-        //  player.SetVar("Alert", true);
+        slideManager.player.SetVar("Alert", true);
     }
 
-     slideManager.printSlides();
-    //Answers with No and subquestions must have perfect spacing. They all must be spelled and cased exactly
-    //change to get called in SL feedbackslide
-    checkCorrectAnswers("No: Failed to appropriately respond, Yes, Yes, No");
+     //slideManager.printSlides();
 }
 
 
